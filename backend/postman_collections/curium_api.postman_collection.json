@@ -1,0 +1,147 @@
+{
+	"info": {
+		"_postman_id": "d8a076eb-25b5-4f82-87ac-b03d5465067e",
+		"name": "curium_api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21993455"
+	},
+	"item": [
+		{
+			"name": "register user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email_id\": \"dsadsasd@k.com\",\r\n    \"lname\": \"dfsdf\",\r\n    \"fname\": \"fdsf\",\r\n    \"password\":\"abcd\",\r\n    \"password2\":\"abcd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/user/register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"dsadsasd@k.com\",\r\n    \"password\":\"abcd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/auth/token",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get profile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzMzcxMzg4LCJpYXQiOjE3MTMzNjk1ODgsImp0aSI6ImY3MGI0NTFjZWU0ODRlMTM4NGI2ZDQzN2I1MmQ1MDEyIiwidXNlcl9pZCI6Ijc2MTY0YTA4LTgwOGUtNGQyMS04YzNkLWEyOGM2MTVhZGZkMiJ9.M_Uf8vXMtkM3f2-nwJyV9hQGJ0LhGTT13SuX8orSybw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/user/profile",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout user",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxMzQ1NTk4OCwiaWF0IjoxNzEzMzY5NTg4LCJqdGkiOiJiNWE5OTZhNzZkYTQ0OTIxYjdiZjVlYmIxOGU3YmIxYyIsInVzZXJfaWQiOiI3NjE2NGEwOC04MDhlLTRkMjEtOGMzZC1hMjhjNjE1YWRmZDIifQ.6GC1S43GjLhHr4ct2NFjS8ULJLH_ZtpB99wz7ayo-Tk\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/auth/token/revoke",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"token",
+						"revoke"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
