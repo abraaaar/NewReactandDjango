@@ -13,7 +13,6 @@ function Form({ route, method }) {
     const [lname, setLname] = useState("");
     const [email_id, setEmailId] = useState("");
     const [password2, setPassword2] = useState("");
-    const [org, setOrg] = useState("");
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const name = method === "login" ? "Login" : "Register";
@@ -23,11 +22,11 @@ function Form({ route, method }) {
         setLoading(true);
 
         try {
-            const data = { username, password, role, fname, lname, email_id, password2, org };
+            const data = { username, password, role, fname, lname, email_id, password2 };
             let res;
             if (method === "login") {
                 // For login, post to the token endpoint
-                res = await api.post("/api/auth/token", { username, password });
+                res = await api.post("/api/user/auth/token", { username, password });
                 localStorage.setItem(ACCESS_TOKEN, res.data.access);
                 localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
             } else {
@@ -44,7 +43,7 @@ function Form({ route, method }) {
                 const role = userInfo.data.role;
 
                 if (role === "Normal User") {
-                    navigate("/normaluser");
+                    navigate("/normaluser"); 
                 } else if (role === "Surgeon") {
                     navigate("/surgeon");
                 } else if (role === "Teleradiologist") {
@@ -109,13 +108,6 @@ function Form({ route, method }) {
                         value={lname}
                         onChange={(e) => setLname(e.target.value)}
                         placeholder="Last Name"
-                    />
-                    <input
-                        className="form-input"
-                        type="text"
-                        value={org}
-                        onChange={(e) => setOrg(e.target.value)}
-                        placeholder="Organization"
                     />
                     <select
                         className="form-input"

@@ -1,15 +1,17 @@
 from django.db import models
 import uuid
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
-from django.apps import apps
 
 class MyAccountManager(BaseUserManager):
-    def create_user(self, email_id, fname, lname, password=None, org=None, role=None):
+    def create_user(self, email_id, fname, lname, password=None):
         if not email_id:
             raise ValueError("Users must have an email address")
 
         user = self.model(
-            email_id=self.normalize_email(email_id), fname=fname, lname=lname, org=org, role=role
+            email_id=self.normalize_email(email_id),
+            fname=fname,
+            lname=lname,
+            username=email_id,  # Set the username to the email_id
         )
 
         user.set_password(password)
@@ -26,8 +28,6 @@ class User(AbstractBaseUser):
     email_id = models.EmailField(unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    org = models.ForeignKey('organization.Organization', on_delete=models.CASCADE, null=True)
-    role = models.CharField(max_length=255, null=True)
 
     USERNAME_FIELD = "username"
     REQUIRED_FIELDS = ["email_id"]

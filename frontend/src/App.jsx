@@ -30,7 +30,7 @@ function App() {
                 <Route path="/surgeon" element={<ProtectedRoute><Surgeon /></ProtectedRoute>} />
                 <Route path="/teleradiologist" element={<ProtectedRoute><Teleradiologist /></ProtectedRoute>} />
                 <Route path="/radiologist" element={<ProtectedRoute><Radiologist /></ProtectedRoute>} />
-                <Route path="*" element={<NotFound />} />
+                <Route path="" element={<NotFound />} />
             </Routes>
         </BrowserRouter>
     );
